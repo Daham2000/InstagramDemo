@@ -22,22 +22,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostUiAdapter extends RecyclerView.Adapter<PostUiAdapter.ViewHolder> {
 
-    //    variables
+    //    variables for post
     private ArrayList<String> imageUrlList;
     private ArrayList<String> postImageUrlList;
     private ArrayList<String> nameList;
     private ArrayList<String> addressList;
     private Context context;
     private ArrayList<Integer> mLikeCount;
+    private ArrayList<String> postDesList;
 
     public PostUiAdapter(ArrayList<String> imageUrlList, ArrayList<String> postImageUrlList,
-                         ArrayList<String> nameList, ArrayList<String> addressList, Context context,ArrayList<Integer> likeList) {
+                         ArrayList<String> nameList, ArrayList<String> addressList, Context context,ArrayList<Integer> likeList,ArrayList<String> postDesList) {
         this.imageUrlList = imageUrlList;
         this.nameList = nameList;
         this.postImageUrlList = postImageUrlList;
         this.addressList = addressList;
         this.context = context;
         this.mLikeCount = likeList;
+        this.postDesList = postDesList;
     }
 
     @NonNull
@@ -56,6 +58,7 @@ public class PostUiAdapter extends RecyclerView.Adapter<PostUiAdapter.ViewHolder
         Glide.with(context).asBitmap().load(postImageUrlList.get(position)).into(holder.postImage);
         holder.name.setText(nameList.get(position));
         holder.address.setText(addressList.get(position));
+        holder.postDescription.setText(postDesList.get(position));
         holder.likeCount.setText(mLikeCount.get(position)+" likes");
         holder.likeBtn.setClickable(true);
         holder.likeBtn.setOnClickListener(
@@ -63,6 +66,12 @@ public class PostUiAdapter extends RecyclerView.Adapter<PostUiAdapter.ViewHolder
                     holder.likeBtn.setBackgroundColor(isLiked == false ? Color.RED : Color.TRANSPARENT);
                     holder.likeBtn.setColorFilter(isLiked == false ? Color.RED : Color.BLACK);
                     isLiked=!isLiked;
+                    if(isLiked){
+                        mLikeCount.set(position,mLikeCount.get(position)+1);
+                    }else{
+                        mLikeCount.set(position,mLikeCount.get(position)-1);
+                    }
+                    holder.likeCount.setText(mLikeCount.get(position)+" likes");
                 });
         holder.image.setOnClickListener(v -> Toast.makeText(context, nameList.get(position), Toast.LENGTH_SHORT));
     }
@@ -76,6 +85,7 @@ public class PostUiAdapter extends RecyclerView.Adapter<PostUiAdapter.ViewHolder
         CircleImageView image;
         TextView name;
         TextView address;
+        TextView postDescription;
         ImageView postImage;
         ImageView likeBtn;
         TextView likeCount;
@@ -85,6 +95,7 @@ public class PostUiAdapter extends RecyclerView.Adapter<PostUiAdapter.ViewHolder
             image = itemView.findViewById(R.id.imgPostID);
             name = itemView.findViewById(R.id.postName);
             address = itemView.findViewById(R.id.postAddress);
+            postDescription = itemView.findViewById(R.id.postTimeID);
             postImage = itemView.findViewById(R.id.imageView7);
             likeBtn = itemView.findViewById(R.id.bottomIconOneID);
             likeCount = itemView.findViewById(R.id.likeID);
