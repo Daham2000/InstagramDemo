@@ -22,23 +22,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private ArrayList<String> mImageUrls;
-    private ArrayList<String> mImageUrlPosts;
-    private ArrayList<String> mNames;
-    private ArrayList<String> mAddress;
-    private ArrayList<Integer> mLikeCount;
-    private ArrayList<String> postDesList;
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<String> mImageUrlPosts =  new ArrayList<>();
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mAddress = new ArrayList<>();
+    private ArrayList<Integer> mLikeCount =new ArrayList<>();
+    private ArrayList<String> postDesList=new ArrayList<>();
 
-    public MainActivity(ArrayList<String> mImageUrls, ArrayList<String> mImageUrlPosts,
-                        ArrayList<String> mNames, ArrayList<String> mAddress, ArrayList<Integer>
-                                mLikeCount, ArrayList<String> postDesList) {
-        this.mImageUrls = mImageUrls;
-        this.mImageUrlPosts = mImageUrlPosts;
-        this.mNames = mNames;
-        this.mAddress = mAddress;
-        this.mLikeCount = mLikeCount;
-        this.postDesList = postDesList;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

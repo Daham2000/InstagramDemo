@@ -2,30 +2,35 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottom_nav_home"
+        android:enabled="true"
         android:icon="@drawable/ic_bottom_nav_house"
         android:title="">
     </item>
 
     <item
         android:id="@+id/bottom_nav_search"
+        android:enabled="true"
         android:icon="@drawable/ic_bottom_nav_search"
         android:title="">
     </item>
 
     <item
         android:id="@+id/bottom_nav_plus"
+        android:enabled="true"
         android:icon="@drawable/ic_bottom_nav_plus"
         android:title="">
     </item>
 
     <item
         android:id="@+id/bottom_nav_favourite"
+        android:enabled="true"
         android:icon="@drawable/ic_bottom_nav_heart"
         android:title="">
     </item>
 
     <item
         android:id="@+id/bottom_nav_profile"
+        android:enabled="true"
         android:icon="@drawable/ic_bottom_nav_profile"
         android:title="">
     </item>
